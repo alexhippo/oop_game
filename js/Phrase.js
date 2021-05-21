@@ -9,7 +9,6 @@ class Phrase {
 
   /**
   * Adds letter placeholders to the display when the game starts
-  * @param {String} phrase - phrase to be used for this game
   */
   // @todo - Reinstate Start Game overlay 
   addPhraseToDisplay() {
@@ -30,10 +29,16 @@ class Phrase {
   }
 
   /**
-  * Checks to see if the letter selected by the player matches a letter in the phrase
+  * Checks if letter selected by player matches a letter in the phrase
+  * @return  {(true|false)} Returns true if letter is found in the phrase; false if not
   */
-  checkLetter() {
-
+  checkLetter(letter) {
+    const phraseArray = this.phrase.split('');
+    if (phraseArray.find(char => letter === char)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
