@@ -30,6 +30,7 @@ class Phrase {
 
   /**
   * Checks if letter selected by player matches a letter in the phrase
+  * @param   {String} letter - The letter/character to check
   * @return  {(true|false)} Returns true if letter is found in the phrase; false if not
   */
   checkLetter(letter) {
@@ -43,9 +44,18 @@ class Phrase {
 
   /**
   * Reveals the letter(s) on the board that matches the player's selection
+  * @param  {String} letter - The letter/character to check
   */
-  showMatchedLetter() {
-
+  showMatchedLetter(letter) {
+    if (this.checkLetter(letter)) {
+      const matchedLetterElements = document.getElementsByClassName(`${letter}`);
+      // Turn Array-like object (like a HTMLCollection) to an Array 
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from#array_from_a_nodelist
+      Array.from(matchedLetterElements).forEach((element) => {
+        element.classList.remove('hide');
+        element.classList.add('show');
+      });
+    }
   }
 
 }
