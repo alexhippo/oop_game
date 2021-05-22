@@ -54,10 +54,31 @@ class Game {
     }
 
     /**
-    * Removes a life from the scoreboard. If player has 5 missed guesses, then it's game over
+    * Removes a life from the scoreboard and increases the number of missed attempts. 
+    * If player has 5 missed guesses, then it's game over
     */
     removeLife() {
-
+        const scoreboard = document.querySelector('#scoreboard ol');
+        switch (this.missed) {
+            case 0:
+                scoreboard.firstElementChild.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                break;
+            case 1:
+                scoreboard.firstElementChild.nextElementSibling.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                break;
+            case 2:
+                scoreboard.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                break;
+            case 3:
+                scoreboard.lastElementChild.previousElementSibling.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                break;
+            case 4:
+                scoreboard.lastElementChild.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                this.gameOver();
+            default:
+                break;
+        }
+        this.missed++;
     }
 
     /**
