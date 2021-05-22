@@ -102,10 +102,10 @@ class Game {
         startScreenOverlay.classList.remove('start');
         const message = document.querySelector('h1#game-over-message');
         if (this.checkForWin()) {
-            message.textContent = 'Congratulations, you guessed the word! Try again?';
+            message.textContent = `Congratulations, you guessed the phrase '${this.activePhrase.phrase}'! Try again?`;
             startScreenOverlay.classList.add('win');
         } else {
-            message.textContent = 'Sorry, you did not guess the word. Try again?';
+            message.textContent = `Sorry, you did not guess the phrase '${this.activePhrase.phrase}'. Try again?`;
             startScreenOverlay.classList.add('lose');
         }
     }
