@@ -36,9 +36,21 @@ class Game {
 
     /**
     * Check to see if a button clicked by the player matches a letter in the phrase
+    * @param  {Object} button - the Button element chosen by the player
     */
-    handleInteraction() {
-
+    handleInteraction(button) {
+        button.setAttribute('disabled', true);
+        const phrase = this.activePhrase.phrase;
+        if (!phrase.checkLetter(button.textContent)) {
+            button.classList.add('wrong');
+            this.removeLife();
+        } else {
+            button.classList.add('chosen');
+            phrase.showMatchedLetter(button.textContent);
+            if (this.checkForWin()) {
+                this.gameOver();
+            }
+        }
     }
 
     /**
