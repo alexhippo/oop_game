@@ -82,10 +82,15 @@ class Game {
     }
 
     /**
-    * Checks to see if all letters have been revealed
+    * Checks to see if all letters have been revealed in the active phrase
+    * @return  {true|false} Returns true if all letters have been revealed; false if not
     */
     checkForWin() {
+        const letterLis = Array.from(document.querySelectorAll('#phrase > ul > li'))
+            .filter((charLi) => !charLi.classList.contains('space'));
 
+        return Array.from(letterLis)
+            .every((letterEl) => letterEl.classList.contains('show'));
     }
 
     /**
