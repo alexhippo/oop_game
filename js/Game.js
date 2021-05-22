@@ -6,11 +6,11 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            { phrase: 'flattening the curve' },
-            { phrase: 'you are on mute' },
-            { phrase: 'vaccination' },
-            { phrase: 'working from home' },
-            { phrase: 'social distancing' }
+            { phrase: new Phrase('flattening the curve') },
+            { phrase: new Phrase('you are on mute') },
+            { phrase: new Phrase('vaccination') },
+            { phrase: new Phrase('working from home') },
+            { phrase: new Phrase('social distancing') }
         ];
         this.activePhrase = null;
     }
@@ -19,14 +19,19 @@ class Game {
     * Hides the start screen overlay, gets and sets a random phrase to active
     */
     startGame() {
-
+        const startScreenOverlay = document.getElementById('overlay');
+        startScreenOverlay.style.display = 'none';
+        this.activePhrase = this.getRandomPhrase(this.phrases);
+        this.activePhrase.phrase.addPhraseToDisplay();
     }
 
     /**
-    * Retrieves a random phrase
+    * Retrieves a random phrase from an Array of Phrase objects
+    * @param  {Array} phrases - Array of Phrase objects 
     */
-    getRandomPhrase() {
-
+    getRandomPhrase(phrases) {
+        const randomNumber = Math.floor(Math.random() * phrases.length - 1) + 1;
+        return phrases[randomNumber];
     }
 
     /**
