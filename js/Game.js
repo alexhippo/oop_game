@@ -97,6 +97,16 @@ class Game {
     * Displays the original start screen overlay and displays win/loss game over message.
     */
     gameOver() {
-
+        const startScreenOverlay = document.getElementById('overlay');
+        startScreenOverlay.style.display = '';
+        startScreenOverlay.classList.remove('start');
+        const message = document.querySelector('h1#game-over-message');
+        if (this.checkForWin()) {
+            message.textContent = 'Congratulations, you guessed the word! Try again?';
+            startScreenOverlay.classList.add('win');
+        } else {
+            message.textContent = 'Sorry, you did not guess the word. Try again?';
+            startScreenOverlay.classList.add('lose');
+        }
     }
 }
