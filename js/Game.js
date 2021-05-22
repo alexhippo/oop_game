@@ -109,4 +109,32 @@ class Game {
             startScreenOverlay.classList.add('lose');
         }
     }
+
+    /**
+    * Displays the original start screen overlay and displays win/loss game over message.
+    */
+    resetGame() {
+        const startScreenOverlay = document.getElementById('overlay');
+        startScreenOverlay.className = '';
+        startScreenOverlay.classList.add('start');
+
+        // remove all li elements from the Phrase ul element
+        const phraseDisplay = document.getElementById('phrase');
+        const phraseDisplayUl = phraseDisplay.firstElementChild;
+        const phraseLiAll = phraseDisplayUl.querySelectorAll('li');
+        Array.from(phraseLiAll).forEach((li) => phraseDisplayUl.removeChild(li));
+
+        // enable all keyboard buttons
+        // remove classes from keyboard buttons
+        const keyboardButtons = document.querySelectorAll('#qwerty button')
+        Array.from(keyboardButtons).forEach((key) => {
+            key.removeAttribute('disabled');
+            key.classList.remove('wrong');
+            key.classList.remove('chosen');
+        })
+
+        // reset all of the heart images
+        const lives = document.querySelectorAll('#scoreboard ol li');
+        Array.from(lives).forEach((life) => life.firstElementChild.setAttribute('src', 'images/liveHeart.png'));
+    }
 }
