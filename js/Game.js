@@ -39,6 +39,7 @@ class Game {
     * @param  {Object} button - the Button element chosen by the player
     */
     handleInteraction(button) {
+        // if key was already pressed/selected - do not do anything
         button.setAttribute('disabled', true);
         const phrase = this.activePhrase.phrase;
         if (!phrase.checkLetter(button.textContent)) {
@@ -108,6 +109,7 @@ class Game {
             message.textContent = `Sorry, you did not guess the phrase '${this.activePhrase.phrase.phrase}'. Try again?`;
             startScreenOverlay.classList.add('lose');
         }
+        this.activePhrase = null;
     }
 
     /**

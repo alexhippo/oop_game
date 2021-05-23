@@ -16,10 +16,12 @@ document.getElementById('qwerty').addEventListener('click', (e) => {
     if (e.target && e.target.nodeName === 'BUTTON') {
         game.handleInteraction(e.target);
     }
-})
+});
 
 document.addEventListener('keydown', (e) => {
-    const key = Array.from(document.querySelectorAll('#qwerty button'))
-        .find((el) => el.textContent === e.key);
-    game.handleInteraction(key);
-})
+    if ((e.code).includes('Key') && game.activePhrase !== null) {
+        const key = Array.from(document.querySelectorAll('#qwerty button'))
+            .find((el) => el.textContent === e.key);
+        game.handleInteraction(key);
+    }
+});
