@@ -10,7 +10,6 @@ class Phrase {
   /**
   * Adds letter placeholders to the display when the game starts
   */
-  // @todo - Reinstate Start Game overlay 
   addPhraseToDisplay() {
     const phraseDisplay = document.getElementById('phrase');
     const phraseDisplayUl = phraseDisplay.firstElementChild;
