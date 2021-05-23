@@ -10,6 +10,9 @@ If the player completes the phrase before they run out of guesses, a winning scr
 
 This project was created as part of the [Treehouse Full Stack Javascript Techdegree](https://teamtreehouse.com/techdegree/full-stack-javascript).
 
+## Styles Changed from Original File
+- heading font was changed to "Bungee Shade" from Google Fonts
+
 ## Getting started
 ### Downloading
 Click on the 'Clone or download' button and select 'Download Zip.'
