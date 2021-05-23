@@ -44,6 +44,7 @@ class Game {
             const phrase = this.activePhrase.phrase;
             if (!phrase.checkLetter(button.textContent)) {
                 button.classList.add('wrong');
+                this.applyWrongAnimation(document.getElementById('phrase'));
                 this.removeLife();
             } else {
                 button.classList.add('chosen');
@@ -56,26 +57,54 @@ class Game {
     }
 
     /**
+    * Applies animation (via Animate.css) to the Phrase and Life elements to indicate the player's wrong choice of key.
+    * Phrase element "shakes" and life element "pulses".
+    * @param  {Object} element - the element we wish to animate
+    */
+    applyWrongAnimation(element) {
+        element.classList.add('animate__animated');
+        if (element === document.getElementById('phrase')) {
+            element.classList.add('animate__shakeX');
+        } else {
+            element.classList.add('animate__flash');
+        }
+
+        document.getElementById('phrase').addEventListener('animationend', () => {
+            if (element === document.getElementById('phrase')) {
+                element.classList = 'section';
+            } else {
+                element.classList = 'tries';
+            }
+        });
+    }
+
+    /**
     * Removes a life from the scoreboard and increases the number of missed attempts. 
     * If player has 5 missed guesses, then it's game over
     */
     removeLife() {
+        // use CSS selectors instead
         const scoreboard = document.querySelector('#scoreboard ol');
         switch (this.missed) {
             case 0:
                 scoreboard.firstElementChild.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                this.applyWrongAnimation(scoreboard.firstElementChild.firstElementChild);
                 break;
             case 1:
                 scoreboard.firstElementChild.nextElementSibling.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                this.applyWrongAnimation(scoreboard.firstElementChild.nextElementSibling.firstElementChild);
                 break;
             case 2:
                 scoreboard.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                this.applyWrongAnimation(scoreboard.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild);
                 break;
             case 3:
                 scoreboard.lastElementChild.previousElementSibling.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                this.applyWrongAnimation(scoreboard.lastElementChild.previousElementSibling.firstElementChild);
                 break;
             case 4:
                 scoreboard.lastElementChild.firstElementChild.setAttribute('src', 'images/lostHeart.png');
+                this.applyWrongAnimation(scoreboard.lastElementChild.firstElementChild);
                 this.gameOver();
             default:
                 break;
@@ -99,18 +128,20 @@ class Game {
     * Displays the original start screen overlay and displays win/loss game over message.
     */
     gameOver() {
-        const startScreenOverlay = document.getElementById('overlay');
-        startScreenOverlay.style.display = '';
-        startScreenOverlay.classList.remove('start');
-        const message = document.querySelector('h1#game-over-message');
-        if (this.checkForWin()) {
-            message.textContent = `Congratulations, you guessed the phrase '${this.activePhrase.phrase.phrase}'! Try again?`;
-            startScreenOverlay.classList.add('win');
-        } else {
-            message.textContent = `Sorry, you did not guess the phrase '${this.activePhrase.phrase.phrase}'. Try again?`;
-            startScreenOverlay.classList.add('lose');
-        }
-        this.activePhrase = null;
+        window.setTimeout(() => {
+            const startScreenOverlay = document.getElementById('overlay');
+            startScreenOverlay.style.display = '';
+            startScreenOverlay.classList.remove('start');
+            const message = document.querySelector('h1#game-over-message');
+            if (this.checkForWin()) {
+                message.textContent = `Congratulations, you guessed the phrase '${this.activePhrase.phrase.phrase}'! Try again?`;
+                startScreenOverlay.classList.add('win');
+            } else {
+                message.textContent = `Sorry, you did not guess the phrase '${this.activePhrase.phrase.phrase}'. Try again?`;
+                startScreenOverlay.classList.add('lose');
+            }
+            this.activePhrase = null;
+        }, 1000)
     }
 
     /**

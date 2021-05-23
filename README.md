@@ -12,6 +12,8 @@ This project was created as part of the [Treehouse Full Stack Javascript Techdeg
 
 ## Styles Changed from Original File
 - heading font was changed to "Bungee Shade" from Google Fonts
+- Phrase element "shakes" if player chooses the incorrect key
+- Life element "pulses" when life is lost
 
 ## Getting started
 ### Downloading
