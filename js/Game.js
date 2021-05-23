@@ -50,6 +50,7 @@ class Game {
                 button.classList.add('chosen');
                 phrase.showMatchedLetter(button.textContent);
                 if (this.checkForWin()) {
+                    this.applyChosenAnimation(document.getElementById('phrase'));
                     this.gameOver();
                 }
             }
@@ -69,12 +70,30 @@ class Game {
             element.classList.add('animate__flash');
         }
 
-        document.getElementById('phrase').addEventListener('animationend', () => {
+        element.addEventListener('animationend', () => {
             if (element === document.getElementById('phrase')) {
                 element.classList = 'section';
             } else {
                 element.classList = 'tries';
             }
+        });
+    }
+
+    /**
+    * Applies animation (via Animate.css) to the Phrase element when they guess the phrase correctly.
+    * Phrase element has a "tada" animation.
+    * @param  {Object} element - the element we wish to animate
+    */
+    applyChosenAnimation(element) {
+        element.classList.add('animate__animated');
+        if (element === document.getElementById('phrase')) {
+            element.classList.add('animate__tada');
+        }
+
+        element.addEventListener('animationend', () => {
+            if (element === document.getElementById('phrase')) {
+                element.classList = 'section';
+            };
         });
     }
 
