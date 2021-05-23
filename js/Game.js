@@ -39,17 +39,18 @@ class Game {
     * @param  {Object} button - the Button element chosen by the player
     */
     handleInteraction(button) {
-        // if key was already pressed/selected - do not do anything
-        button.setAttribute('disabled', true);
-        const phrase = this.activePhrase.phrase;
-        if (!phrase.checkLetter(button.textContent)) {
-            button.classList.add('wrong');
-            this.removeLife();
-        } else {
-            button.classList.add('chosen');
-            phrase.showMatchedLetter(button.textContent);
-            if (this.checkForWin()) {
-                this.gameOver();
+        if (!button.getAttribute('disabled')) {
+            button.setAttribute('disabled', true);
+            const phrase = this.activePhrase.phrase;
+            if (!phrase.checkLetter(button.textContent)) {
+                button.classList.add('wrong');
+                this.removeLife();
+            } else {
+                button.classList.add('chosen');
+                phrase.showMatchedLetter(button.textContent);
+                if (this.checkForWin()) {
+                    this.gameOver();
+                }
             }
         }
     }
