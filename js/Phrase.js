@@ -34,11 +34,7 @@ class Phrase {
   */
   checkLetter(letter) {
     const phraseArray = this.phrase.split('');
-    if (phraseArray.find(char => letter === char)) {
-      return true;
-    } else {
-      return false;
-    }
+    return phraseArray.find(char => letter === char);
   }
 
   /**
