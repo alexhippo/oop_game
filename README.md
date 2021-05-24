@@ -16,7 +16,9 @@ This project was created as part of the [Treehouse Full Stack Javascript Techdeg
 - Heading font was changed to "Bungee Shade" from Google Fonts
 - Phrase element "shakes" if player chooses the incorrect key
 - Life element "pulses" when life is lost
-- Phrase element has a "tada" animation when player guesses the phrase correctly.
+- Phrase element has a "tada" animation when player guesses the phrase correctly
+- Colours (except for the hidden letters in Phrase) have been updated after running the site through an Accessibility Contrast Checker
+- Pressing Enter on keyboard on Start Game screen will also start the game
 
 ## Getting started
 ### Downloading
