@@ -14,6 +14,7 @@ class Game {
         ];
         this.activePhrase = null;
         this.startScreenOverlay = document.getElementById('overlay');
+        this.phraseDisplay = document.getElementById('phrase');
     }
 
     /**
@@ -53,13 +54,13 @@ class Game {
             const phrase = this.activePhrase.phrase;
             if (!phrase.checkLetter(button.textContent)) {
                 button.classList.add('wrong');
-                this.applyWrongAnimation(document.getElementById('phrase'));
+                this.applyWrongAnimation(this.phraseDisplay);
                 this.removeLife();
             } else {
                 button.classList.add('chosen');
                 phrase.showMatchedLetter(button.textContent);
                 if (this.checkForWin()) {
-                    this.applyChosenAnimation(document.getElementById('phrase'));
+                    this.applyChosenAnimation(this.phraseDisplay);
                     this.gameOver();
                 }
             }
@@ -74,14 +75,14 @@ class Game {
     */
     applyWrongAnimation(element) {
         element.classList.add('animate__animated');
-        if (element === document.getElementById('phrase')) {
+        if (element === this.phraseDisplay) {
             element.classList.add('animate__shakeX');
         } else {
             element.classList.add('animate__flash');
         };
 
         element.addEventListener('animationend', () => {
-            if (element === document.getElementById('phrase')) {
+            if (element === this.phraseDisplay) {
                 element.classList = 'section';
             } else {
                 element.classList = 'tries';
@@ -97,12 +98,12 @@ class Game {
     */
     applyChosenAnimation(element) {
         element.classList.add('animate__animated');
-        if (element === document.getElementById('phrase')) {
+        if (element === this.phraseDisplay) {
             element.classList.add('animate__tada');
         }
 
         element.addEventListener('animationend', () => {
-            if (element === document.getElementById('phrase')) {
+            if (element === this.phraseDisplay) {
                 element.classList = 'section';
             };
         });
@@ -164,8 +165,7 @@ class Game {
         this.startScreenOverlay.className = '';
         this.startScreenOverlay.classList.add('start');
 
-        const phraseDisplay = document.getElementById('phrase');
-        const phraseDisplayUl = phraseDisplay.firstElementChild;
+        const phraseDisplayUl = this.phraseDisplay.firstElementChild;
         const phraseLiAll = phraseDisplayUl.querySelectorAll('li');
         Array.from(phraseLiAll).forEach((li) => phraseDisplayUl.removeChild(li));
 
