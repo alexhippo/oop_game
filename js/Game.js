@@ -60,7 +60,7 @@ class Game {
                 button.classList.add('chosen');
                 phrase.showMatchedLetter(button.textContent);
                 if (this.checkForWin()) {
-                    this.applyChosenAnimation(this.phraseDisplay);
+                    this.applyWinAnimation(this.phraseDisplay);
                     this.gameOver();
                 }
             }
@@ -96,7 +96,7 @@ class Game {
     * Resets classes at animation end
     * @param  {Object} element - the element we wish to animate
     */
-    applyChosenAnimation(element) {
+    applyWinAnimation(element) {
         element.classList.add('animate__animated');
         if (element === this.phraseDisplay) {
             element.classList.add('animate__tada');
