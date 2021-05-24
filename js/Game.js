@@ -13,14 +13,16 @@ class Game {
             { phrase: new Phrase('social distancing') }
         ];
         this.activePhrase = null;
+        this.startScreenOverlay = document.getElementById('overlay');
     }
+
+
 
     /**
     * Hides the start screen overlay, gets and sets a random phrase to active
     */
     startGame() {
-        const startScreenOverlay = document.getElementById('overlay');
-        startScreenOverlay.style.display = 'none';
+        this.startScreenOverlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase(this.phrases);
         this.activePhrase.phrase.addPhraseToDisplay();
     }
@@ -46,6 +48,7 @@ class Game {
                 button.classList.add('wrong');
                 this.applyWrongAnimation(document.getElementById('phrase'));
                 this.removeLife();
+                // if this.missed === 5 - disable everything until the win/lose message is displayed
             } else {
                 button.classList.add('chosen');
                 phrase.showMatchedLetter(button.textContent);
@@ -131,16 +134,15 @@ class Game {
     */
     gameOver() {
         window.setTimeout(() => {
-            const startScreenOverlay = document.getElementById('overlay');
-            startScreenOverlay.style.display = '';
-            startScreenOverlay.classList.remove('start');
+            this.startScreenOverlay.style.display = '';
+            this.startScreenOverlay.classList.remove('start');
             const message = document.querySelector('h1#game-over-message');
             if (this.checkForWin()) {
                 message.innerHTML = `Congratulations! You guessed the phrase <i>${this.activePhrase.phrase.phrase}</i>. Try again?`;
-                startScreenOverlay.classList.add('win');
+                this.startScreenOverlay.classList.add('win');
             } else {
                 message.innerHTML = `Bummer, you did not guess the phrase <i>${this.activePhrase.phrase.phrase}</i>. Try again?`;
-                startScreenOverlay.classList.add('lose');
+                this.startScreenOverlay.classList.add('lose');
             }
             this.activePhrase = null;
         }, 1000);
@@ -153,9 +155,8 @@ class Game {
     * Resets lives
     */
     resetGame() {
-        const startScreenOverlay = document.getElementById('overlay');
-        startScreenOverlay.className = '';
-        startScreenOverlay.classList.add('start');
+        this.startScreenOverlay.className = '';
+        this.startScreenOverlay.classList.add('start');
 
         const phraseDisplay = document.getElementById('phrase');
         const phraseDisplayUl = phraseDisplay.firstElementChild;
