@@ -77,14 +77,14 @@ class Game {
         element.classList.add('animate__animated');
         if (element === this.phraseDisplay) {
             element.classList.add('animate__shakeX');
-        } else {
+        } else if (element.parentElement === document.querySelector('#scoreboard ol > li')) {
             element.classList.add('animate__flash');
         };
 
         element.addEventListener('animationend', () => {
             if (element === this.phraseDisplay) {
                 element.classList = 'section';
-            } else {
+            } else if (element.parentElement === document.querySelector('#scoreboard ol > li')) {
                 element.classList = 'tries';
             }
         });
