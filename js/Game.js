@@ -16,8 +16,6 @@ class Game {
         this.startScreenOverlay = document.getElementById('overlay');
     }
 
-
-
     /**
     * Hides the start screen overlay, gets and sets a random phrase to active
     */
@@ -37,6 +35,15 @@ class Game {
     }
 
     /**
+    * Indicates whether the game is currently active or not
+    * Used for indicating whether the user can continue interacting with the keys
+    * @return  {(true|false)} Returns true if game is still "active", false if not
+    */
+    isGameActive() {
+        return this.activePhrase !== null && this.missed < 5;
+    }
+
+    /**
     * Check to see if a button clicked by the player matches a letter in the phrase
     * @param  {Object} button - the Button element chosen by the player
     */
@@ -48,7 +55,6 @@ class Game {
                 button.classList.add('wrong');
                 this.applyWrongAnimation(document.getElementById('phrase'));
                 this.removeLife();
-                // if this.missed === 5 - disable everything until the win/lose message is displayed
             } else {
                 button.classList.add('chosen');
                 phrase.showMatchedLetter(button.textContent);
@@ -62,7 +68,7 @@ class Game {
 
     /**
     * Applies animation (via Animate.css) to the Phrase and Life elements to indicate the player's wrong choice of key.
-    * Phrase element "shakes" and life element "pulses".
+    * Phrase element "shakes" and Life element "pulses".
     * Resets classes at animation end
     * @param  {Object} element - the element we wish to animate
     */
@@ -118,7 +124,7 @@ class Game {
 
     /**
     * Checks to see if all letters have been revealed in the active phrase
-    * @return  {true|false} Returns true if all letters have been revealed; false if not
+    * @return  {(true|false)} Returns true if all letters have been revealed; false if not
     */
     checkForWin() {
         const letterLis = Array.from(document.querySelectorAll('#phrase > ul > li'))
