@@ -60,6 +60,7 @@ class Game {
     /**
     * Applies animation (via Animate.css) to the Phrase and Life elements to indicate the player's wrong choice of key.
     * Phrase element "shakes" and life element "pulses".
+    * Resets classes at animation end
     * @param  {Object} element - the element we wish to animate
     */
     applyWrongAnimation(element) {
@@ -82,6 +83,7 @@ class Game {
     /**
     * Applies animation (via Animate.css) to the Phrase element when they guess the phrase correctly.
     * Phrase element has a "tada" animation.
+    * Resets classes at animation end
     * @param  {Object} element - the element we wish to animate
     */
     applyChosenAnimation(element) {
@@ -125,6 +127,7 @@ class Game {
 
     /**
     * Displays the original start screen overlay and displays win/loss game over message.
+    * Waits 1 second to show the user what the current state of the board is, then displays the message.
     */
     gameOver() {
         window.setTimeout(() => {
@@ -133,10 +136,10 @@ class Game {
             startScreenOverlay.classList.remove('start');
             const message = document.querySelector('h1#game-over-message');
             if (this.checkForWin()) {
-                message.textContent = `Congratulations, you guessed the phrase '${this.activePhrase.phrase.phrase}'! Try again?`;
+                message.innerHTML = `Congratulations! You guessed the phrase <i>${this.activePhrase.phrase.phrase}</i>. Try again?`;
                 startScreenOverlay.classList.add('win');
             } else {
-                message.textContent = `Sorry, you did not guess the phrase '${this.activePhrase.phrase.phrase}'. Try again?`;
+                message.innerHTML = `Bummer, you did not guess the phrase <i>${this.activePhrase.phrase.phrase}</i>. Try again?`;
                 startScreenOverlay.classList.add('lose');
             }
             this.activePhrase = null;

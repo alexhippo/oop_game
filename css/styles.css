@@ -5,8 +5,8 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
+  --color-win: #00ad25;
+  --color-lose: #f06c4e;
   --color-start: #5b85b7;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
@@ -113,7 +113,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #008393;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -140,7 +140,7 @@ button {
 }
 
 .wrong {
-  background: #f7a964;
+  background: #aa6700;
   color: #FFFFFF;
 }
 
@@ -198,7 +198,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #f06c4e;
 }
 
 .lose a {
