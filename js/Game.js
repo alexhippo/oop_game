@@ -6,7 +6,7 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            { phrase: new Phrase('flattening the curve') },
+            { phrase: new Phrase('wear a mask') },
             { phrase: new Phrase('you are on mute') },
             { phrase: new Phrase('vaccination') },
             { phrase: new Phrase('working from home') },
