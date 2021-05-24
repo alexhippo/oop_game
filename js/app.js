@@ -25,4 +25,10 @@ document.addEventListener('keydown', (e) => {
             .find((el) => el.textContent === e.key);
         game.handleInteraction(key);
     }
+
+    if ((e.code === 'Enter') && game.activePhrase === null) {
+        game = new Game();
+        game.resetGame();
+        game.startGame();
+    }
 });
