@@ -5,6 +5,7 @@
 class Phrase {
   constructor(phrase) {
     this.phrase = phrase.toLowerCase();
+    this.phraseArray = this.phrase.split('');
   }
 
   /**
@@ -13,9 +14,8 @@ class Phrase {
   addPhraseToDisplay() {
     const phraseDisplay = document.getElementById('phrase');
     const phraseDisplayUl = phraseDisplay.firstElementChild;
-    const phraseArray = this.phrase.split('');
 
-    phraseArray.forEach((char) => {
+    this.phraseArray.forEach((char) => {
       const charLi = document.createElement('li');
       charLi.textContent = char;
       if (char !== ' ') {
@@ -33,8 +33,7 @@ class Phrase {
   * @return  {(true|false)} Returns true if letter is found in the phrase; false if not
   */
   checkLetter(letter) {
-    const phraseArray = this.phrase.split('');
-    return phraseArray.find(char => letter === char);
+    return this.phraseArray.find(char => letter === char);
   }
 
   /**
@@ -52,5 +51,4 @@ class Phrase {
       });
     }
   }
-
 }
