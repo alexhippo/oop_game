@@ -102,33 +102,13 @@ class Game {
     * If player has 5 missed guesses, then it's game over
     */
     removeLife() {
-        // use CSS selectors instead
-        const scoreboard = document.querySelector('#scoreboard ol');
-        switch (this.missed) {
-            case 0:
-                scoreboard.firstElementChild.firstElementChild.setAttribute('src', 'images/lostHeart.png');
-                this.applyWrongAnimation(scoreboard.firstElementChild.firstElementChild);
-                break;
-            case 1:
-                scoreboard.firstElementChild.nextElementSibling.firstElementChild.setAttribute('src', 'images/lostHeart.png');
-                this.applyWrongAnimation(scoreboard.firstElementChild.nextElementSibling.firstElementChild);
-                break;
-            case 2:
-                scoreboard.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.setAttribute('src', 'images/lostHeart.png');
-                this.applyWrongAnimation(scoreboard.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild);
-                break;
-            case 3:
-                scoreboard.lastElementChild.previousElementSibling.firstElementChild.setAttribute('src', 'images/lostHeart.png');
-                this.applyWrongAnimation(scoreboard.lastElementChild.previousElementSibling.firstElementChild);
-                break;
-            case 4:
-                scoreboard.lastElementChild.firstElementChild.setAttribute('src', 'images/lostHeart.png');
-                this.applyWrongAnimation(scoreboard.lastElementChild.firstElementChild);
-                this.gameOver();
-            default:
-                break;
-        }
         this.missed++;
+        const life = document.querySelector(`#scoreboard ol > li:nth-child(${this.missed})> img`);
+        life.setAttribute('src', 'images/lostHeart.png');
+        this.applyWrongAnimation(life);
+        if (this.missed === 5) {
+            this.gameOver();
+        }
     }
 
     /**
