@@ -114,6 +114,7 @@ class Game {
         this.missed++;
         const life = document.querySelector(`#scoreboard ol > li:nth-child(${this.missed})> img`);
         life.setAttribute('src', 'images/lostHeart.png');
+        life.setAttribute('alt', 'Lost Heart Icon');
         this.applyWrongAnimation(life);
         if (this.missed === 5) {
             this.gameOver();
