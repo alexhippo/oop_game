@@ -1,5 +1,7 @@
 # Phrase Hunter: Object-Oriented Programming Game
 
+[View the demo](https://alexhippo.github.io/oop_game)
+
 This project demonstrates Object-Oriented Programming principles with Javascript through a browser-based, word guessing game called "Phrase Hunter". Players will try to guess a random hidden phrase by clicking letters on an onscreen keyboard. 
 
 Each time the player guesses a letter (only once), the program compares the letter the player has chosen with the random phrase. If the letter is in the phrase, the gameboard displays the chosen letters on the screen.
@@ -21,7 +23,7 @@ This project was created as part of the [Treehouse Full Stack Javascript Techdeg
 - Colours (except for the hidden letters in Phrase) have been updated after running the site through an Accessibility Contrast Checker
 - Pressing Enter on keyboard on Start Game screen will also start the game
 - Moved script tags inside Body as per W3C Markup Validation Service
-- Changed main <div> to <main> to follow semantic markup
+- Changed main `<div>` to `<main>` to follow semantic markup
 
 ## Getting started
 ### Downloading
