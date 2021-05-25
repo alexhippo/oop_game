@@ -6,7 +6,6 @@ let game = new Game();
 
 // Starts the game when player clicks on Start Game button
 document.getElementById('btn__reset').addEventListener('click', () => {
-    game = new Game();
     game.resetGame();
     game.startGame();
 })
@@ -26,7 +25,6 @@ document.addEventListener('keydown', (e) => {
     }
 
     if ((e.code === 'Enter') && !game.isGameActive()) {
-        game = new Game();
         game.resetGame();
         game.startGame();
     }

@@ -21,6 +21,7 @@ class Game {
     * Hides the start screen overlay, gets and sets a random phrase to active
     */
     startGame() {
+        game.resetGame();
         this.startScreenOverlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase(this.phrases);
         this.activePhrase.phrase.addPhraseToDisplay();
@@ -32,7 +33,7 @@ class Game {
     */
     getRandomPhrase(phrases) {
         const randomNumber = Math.floor(Math.random() * phrases.length - 1) + 1;
-        return phrases[randomNumber];
+        return this.phrases[randomNumber];
     }
 
     /**
@@ -46,7 +47,7 @@ class Game {
 
     /**
     * Check to see if a button clicked by the player matches a letter in the phrase
-    * @param  {Object} button - the Button element chosen by the player
+    * @param  {HTMLButtonElement} button - the Button element chosen by the player
     */
     handleInteraction(button) {
         if (!button.getAttribute('disabled')) {
@@ -71,7 +72,7 @@ class Game {
     * Applies animation (via Animate.css) to the Phrase and Life elements to indicate the player's wrong choice of key.
     * Phrase element "shakes" and Life element "flashes".
     * Resets classes at animation end
-    * @param  {Object} element - the element we wish to animate
+    * @param  {HTMLButtonElement} element - the element we wish to animate
     */
     applyWrongAnimation(element) {
         element.classList.add('animate__animated');
@@ -92,7 +93,7 @@ class Game {
     * Applies animation (via Animate.css) to the Phrase element when they guess the phrase correctly.
     * Phrase element has a "tada" animation.
     * Resets classes at animation end
-    * @param  {Object} element - the element we wish to animate
+    * @param  {HTMLButtonElement} element - the element we wish to animate
     */
     applyWinAnimation(element) {
         element.classList.add('animate__animated');
@@ -174,5 +175,7 @@ class Game {
 
         const lives = document.querySelectorAll('#scoreboard ol li');
         Array.from(lives).forEach((life) => life.firstElementChild.setAttribute('src', 'images/liveHeart.png'));
+        this.missed = 0;
+        this.activePhrase = null;
     }
 }
