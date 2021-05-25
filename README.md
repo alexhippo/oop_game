@@ -14,9 +14,10 @@ This project was created as part of the [Treehouse Full Stack Javascript Techdeg
 - Renamed the title of the game to "2020 Phrase Hunter"
 - Added instructions on how to play the game
 - Heading font was changed to "Bungee Shade" from Google Fonts
-- Phrase element "shakes" if player chooses the incorrect key
-- Life element "pulses" when life is lost
-- Phrase element has a "tada" animation when player guesses the phrase correctly
+- Animation from Animate.css (not from the provided css/animate.css, but from the latest version of Animate.css) was added:
+  - Phrase element "shakes" if player chooses the incorrect key
+  - Life element "flashes" when life is lost
+  - Phrase element has a "tada" animation when player guesses the phrase correctly
 - Colours (except for the hidden letters in Phrase) have been updated after running the site through an Accessibility Contrast Checker
 - Pressing Enter on keyboard on Start Game screen will also start the game
 

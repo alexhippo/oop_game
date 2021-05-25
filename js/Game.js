@@ -69,7 +69,7 @@ class Game {
 
     /**
     * Applies animation (via Animate.css) to the Phrase and Life elements to indicate the player's wrong choice of key.
-    * Phrase element "shakes" and Life element "pulses".
+    * Phrase element "shakes" and Life element "flashes".
     * Resets classes at animation end
     * @param  {Object} element - the element we wish to animate
     */
@@ -77,16 +77,14 @@ class Game {
         element.classList.add('animate__animated');
         if (element === this.phraseDisplay) {
             element.classList.add('animate__shakeX');
-        } else if (element.parentElement === document.querySelector('#scoreboard ol > li')) {
+        } else if (element.parentElement === document.querySelector(`#scoreboard ol > li:nth-child(${this.missed})`)) {
             element.classList.add('animate__flash');
         };
 
         element.addEventListener('animationend', () => {
-            if (element === this.phraseDisplay) {
-                element.classList = 'section';
-            } else if (element.parentElement === document.querySelector('#scoreboard ol > li')) {
-                element.classList = 'tries';
-            }
+            element.classList.remove('animate__animated');
+            element.classList.remove('animate__shakeX');
+            element.classList.remove('animate__flash');
         });
     }
 
@@ -103,9 +101,8 @@ class Game {
         }
 
         element.addEventListener('animationend', () => {
-            if (element === this.phraseDisplay) {
-                element.classList = 'section';
-            };
+            element.classList.remove('animate__animated');
+            element.classList.remove('animate__tada');
         });
     }
 
