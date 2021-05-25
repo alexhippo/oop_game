@@ -154,9 +154,9 @@ class Game {
 
     /**
     * Resets the board
-    * Removes the Phrase display
+    * Resets the Phrase and Phrase display
     * Re-enables all keyboard buttons and resets keyboard character classes
-    * Resets lives
+    * Resets lives and missed
     */
     resetGame() {
         this.startScreenOverlay.className = '';

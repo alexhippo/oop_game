@@ -33,7 +33,7 @@ class Phrase {
   * @return  {(true|false)} Returns true if letter is found in the phrase; false if not
   */
   checkLetter(letter) {
-    return this.phraseArray.find(char => letter === char);
+    return this.phraseArray.find((char) => letter === char);
   }
 
   /**

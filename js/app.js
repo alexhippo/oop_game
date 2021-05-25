@@ -2,11 +2,11 @@
  * Project 4 - OOP Game App
  * app.js */
 
-let game = new Game();
+let game;
 
 // Starts the game when player clicks on Start Game button
 document.getElementById('btn__reset').addEventListener('click', () => {
-    game.resetGame();
+    game = new Game();
     game.startGame();
 })
 
@@ -24,8 +24,10 @@ document.addEventListener('keydown', (e) => {
         game.handleInteraction(key);
     }
 
-    if ((e.code === 'Enter') && !game.isGameActive()) {
-        game.resetGame();
-        game.startGame();
+    if ((e.code === 'Enter')) {
+        if (!game || (game && !game.isGameActive())) {
+            game = new Game();
+            game.startGame();
+        }
     }
 });
