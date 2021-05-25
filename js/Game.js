@@ -153,7 +153,7 @@ class Game {
     }
 
     /**
-    * Displays the original start screen overlay and displays win/loss game over message.
+    * Resets the board
     * Removes the Phrase display
     * Re-enables all keyboard buttons and resets keyboard character classes
     * Resets lives
