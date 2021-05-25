@@ -20,6 +20,8 @@ This project was created as part of the [Treehouse Full Stack Javascript Techdeg
   - Phrase element has a "tada" animation when player guesses the phrase correctly
 - Colours (except for the hidden letters in Phrase) have been updated after running the site through an Accessibility Contrast Checker
 - Pressing Enter on keyboard on Start Game screen will also start the game
+- Moved script tags inside Body as per W3C Markup Validation Service
+- Changed main <div> to <main> to follow semantic markup
 
 ## Getting started
 ### Downloading
