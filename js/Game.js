@@ -21,7 +21,6 @@ class Game {
     * Hides the start screen overlay, gets and sets a random phrase to active
     */
     startGame() {
-        game.resetGame();
         this.startScreenOverlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase(this.phrases);
         this.activePhrase.phrase.addPhraseToDisplay();
@@ -148,7 +147,7 @@ class Game {
                 message.innerHTML = `Bummer, you did not guess the phrase <i>${this.activePhrase.phrase.phrase}</i>. Try again?`;
                 this.startScreenOverlay.classList.add('lose');
             }
-            this.activePhrase = null;
+            this.resetGame();
         }, 1000);
     }
 
@@ -159,9 +158,6 @@ class Game {
     * Resets lives and missed
     */
     resetGame() {
-        this.startScreenOverlay.className = '';
-        this.startScreenOverlay.classList.add('start');
-
         const phraseDisplayUl = this.phraseDisplay.firstElementChild;
         const phraseLiAll = phraseDisplayUl.querySelectorAll('li');
         Array.from(phraseLiAll).forEach((li) => phraseDisplayUl.removeChild(li));
