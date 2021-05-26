@@ -170,7 +170,10 @@ class Game {
         });
 
         const lives = document.querySelectorAll('#scoreboard ol li');
-        Array.from(lives).forEach((life) => life.firstElementChild.setAttribute('src', 'images/liveHeart.png'));
+        Array.from(lives).forEach((life) => {
+            life.firstElementChild.setAttribute('src', 'images/liveHeart.png');
+            life.firstElementChild.setAttribute('alt', 'Heart Icon');
+        });
         this.missed = 0;
         this.activePhrase = null;
     }
