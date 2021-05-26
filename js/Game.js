@@ -22,6 +22,7 @@ class Game {
     */
     startGame() {
         this.startScreenOverlay.style.display = 'none';
+        this.startScreenOverlay.classList = '';
         this.activePhrase = this.getRandomPhrase(this.phrases);
         this.activePhrase.phrase.addPhraseToDisplay();
     }
