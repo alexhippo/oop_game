@@ -139,7 +139,6 @@ class Game {
     gameOver() {
         window.setTimeout(() => {
             this.startScreenOverlay.style.display = '';
-            this.startScreenOverlay.classList.remove('start');
             const message = document.querySelector('h1#game-over-message');
             if (this.checkForWin()) {
                 message.innerHTML = `Congratulations! You guessed the phrase <i>${this.activePhrase.phrase.phrase}</i>. Try again?`;
